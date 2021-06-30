@@ -41,6 +41,7 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
   return (
     <StyledButton
       ref={connect}
+      onClick={randomFunction()}
       className={cx([
         'rounded w-full px-4 py-2',
         {
@@ -53,6 +54,10 @@ export const Button: UserComponent<ButtonProps> = (props: any) => {
     </StyledButton>
   );
 };
+
+function randomFunction() {
+  console.log('yello.');
+}
 
 Button.craft = {
   displayName: 'Button',
@@ -71,3 +76,4 @@ Button.craft = {
     toolbar: ButtonSettings,
   },
 };
+

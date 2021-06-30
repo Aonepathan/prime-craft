@@ -1,5 +1,5 @@
 import { useNode, useEditor } from '@craftjs/core';
-import React from 'react';
+import React, { useState } from 'react';
 import ContentEditable from 'react-contenteditable';
 
 import { TextSettings } from './TextSettings';
@@ -21,7 +21,7 @@ export const Text = ({
   color,
   shadow,
   text,
-  margin,
+  margin
 }: Partial<TextProps>) => {
   const {
     connectors: { connect },
@@ -30,13 +30,16 @@ export const Text = ({
   const { enabled } = useEditor((state) => ({
     enabled: state.options.enabled,
   }));
+  const [textItem, setText] : any = useState("");
   return (
+    <div>
     <ContentEditable
       innerRef={connect}
       html={text} // innerHTML of the editable div
       disabled={!enabled}
       onChange={(e) => {
         setProp((prop) => (prop.text = e.target.value), 500);
+        setText(e.target.value);
       }} // use true to disable editing
       tagName="h2" // Use a custom HTML tag (uses a div by default)
       style={{
@@ -49,6 +52,9 @@ export const Text = ({
         textAlign,
       }}
     />
+    <h3>{textItem}</h3>
+    </div>
+    
   );
 };
 
