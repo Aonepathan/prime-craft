@@ -1,23 +1,26 @@
 import { useNode, useEditor } from '@craftjs/core';
 import { Column } from 'primereact/column';
 import React from 'react';
+import { ReactDOM } from 'react';
 import ContentEditable from 'react-contenteditable';
+import { ColumnSettings } from '../PrimeColumn/ColumnSettings';
 
 export type ColumnProps = {
     field: string;
     header: string;
 }
-
-export const PrimeColumn = ({ field,header}: Partial<ColumnProps>) => {
-    const { connectors: { connect }, setProp,} = useNode();
-    const { enabled } = useEditor((state) => ({
-        enabled: state.options.enabled,
-      }));
+// {field,header}: Partial<ColumnProps>
+export const PrimeColumn = (props: any) => {
+    const { connectors: { connect, drag }, setProp,} = useNode();
+    // const { enabled } = useEditor((state) => ({
+    //     enabled: state.options.enabled,
+    //   }));
       return (
         <Column
-        //   ref={connect}
-          field={field}
-          header={header}
+          {...props}
+          //ref={dom => connect(drag(dom))}
+          field="code"
+          header="Code"
         ></Column>
       );
 };
@@ -27,5 +30,8 @@ PrimeColumn.craft = {
     props: {
         field: 'fieldName',
         header: 'Ex Column Name'
+    },
+    related: {
+      toolbar: ColumnSettings,
     }
 }

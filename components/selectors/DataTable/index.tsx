@@ -1,9 +1,10 @@
-import { UserComponent, useNode } from '@craftjs/core';
+import { UserComponent, useNode, Element } from '@craftjs/core';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
-import React, { Component } from 'react';
+import React from 'react';
+import { ReactDOM } from 'react';
 
 import { DataTable, DataTableProps } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -20,29 +21,26 @@ type ColumnProps = {
 
 }
 
-
-
-export const PrimeDataTable = (props: DataTableProps) => {
-
+export const PrimeDataTable = (props: any) => {
     const {
         connectors: { connect },
       } = useNode((node) => ({
         selected: node.events.selected,
       }));
 
-    const { value } = props;
+    const { value, header } = props;
     return (
-        <div>
-            <div className="card">
+        // <div>
+            // <Element is="div" className="card" canvas id="someDiv">
                 <DataTable value={data.data}>
                     <Column field="code" header="Code"></Column>
                     <Column field="name" header="Name"></Column>
                     <Column field="category" header="Category"></Column>
                     <Column field="quantity" header="Quantity"></Column>
-                    {/* <PrimeColumn {...columnComponent} /> */}
+                    <PrimeColumn />
                 </DataTable>
-            </div>
-        </div>
+            // </Element>
+        // </div>
     );
 }
 

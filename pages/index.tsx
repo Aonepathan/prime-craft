@@ -12,6 +12,7 @@ import { Custom2, Custom2VideoDrop } from '../components/selectors/Custom2';
 import { Custom3, Custom3BtnDrop } from '../components/selectors/Custom3';
 import { Video } from '../components/selectors/Video';
 import { PrimeDataTable } from '../components/selectors/DataTable';
+import { PrimeColumn } from '../components/selectors/DataTable/PrimeColumn';
 
 const theme = createMuiTheme({
   typography: {
@@ -50,7 +51,8 @@ function App() {
             OnlyButtons,
             Button,
             Video,
-            PrimeDataTable
+            PrimeDataTable,
+            PrimeColumn
           }}
           enabled={false}
           onRender={RenderNode}

@@ -12,6 +12,7 @@ import { Container } from '../../selectors/Container';
 import { Text } from '../../selectors/Text';
 import { Video } from '../../selectors/Video';
 import { PrimeDataTable } from 'components/selectors/DataTable';
+import { PrimeColumn } from 'components/selectors/DataTable/PrimeColumn';
 
 const ToolboxDiv = styled.div<{ enabled: boolean }>`
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -94,6 +95,13 @@ export const Toolbox = () => {
         </div>
         <div ref={(ref) => create(ref, <PrimeDataTable />)}>
           <Tooltip title="Prime DataTable" placement="right">
+            <Item className="m-2 pb-2 cursor-pointer block" move>
+              <SquareSvg />
+            </Item>
+          </Tooltip>
+        </div>
+        <div ref={(ref) => create(ref, <PrimeColumn />)}>
+          <Tooltip title="Prime Column" placement="right">
             <Item className="m-2 pb-2 cursor-pointer block" move>
               <SquareSvg />
             </Item>
